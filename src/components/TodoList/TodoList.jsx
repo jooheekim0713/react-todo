@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AddTodo from '../AddTodo/AddTodo';
 
 export default function TodoList(props) {
   const [todos, setTodos] = useState([
@@ -13,6 +14,7 @@ export default function TodoList(props) {
       status: 'active',
     },
   ]);
+  const handleAdd = (todo) => setTodos([...todos, todo]);
   return (
     <section>
       <ul>
@@ -20,6 +22,7 @@ export default function TodoList(props) {
           <li key={item.id}>{item.text}</li>
         ))}
       </ul>
+      <AddTodo onAdd={handleAdd} />
     </section>
   );
 }
